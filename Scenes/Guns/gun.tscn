@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://31mm4b46mp6t"]
+
+[ext_resource type="Texture2D" uid="uid://db17svmbix0ft" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Gun.png" id="1_vk1bi"]
+
+[node name="Gun" type="Node2D" unique_id=1243215424]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1891330144]
+position = Vector2(12, -5)
+texture = ExtResource("1_vk1bi")

@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://ccpdh1pmlptdd"]
 
+[ext_resource type="PackedScene" uid="uid://c45pt5gb26u5q" path="res://Top-Down-Shooter-Game/Scenes/Player/player.tscn" id="1_1psht"]
+
 [node name="Main" type="Node2D" unique_id=2026864446]
+
+[node name="Player" parent="." unique_id=222796903 instance=ExtResource("1_1psht")]
+position = Vector2(-5, 9)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=496383880]
