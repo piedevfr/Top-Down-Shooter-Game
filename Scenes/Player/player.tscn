@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://c45pt5gb26u5q"]
 
+[ext_resource type="Texture2D" uid="uid://sv1vw5pdfpcj" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Player.png" id="1_3wb1g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wb1g"]
+radius = 15.0
+
 [node name="Player" type="CharacterBody2D" unique_id=222796903]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022014073]
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1503373710]
+texture = ExtResource("1_3wb1g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022014073]
+shape = SubResource("CircleShape2D_3wb1g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=832081949]
