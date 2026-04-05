@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://31mm4b46mp6t"]
 
+[ext_resource type="Script" uid="uid://co1brkav7crcm" path="res://Top-Down-Shooter-Game/Scripts/gun.gd" id="1_6qmb8"]
 [ext_resource type="Texture2D" uid="uid://db17svmbix0ft" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Gun.png" id="1_vk1bi"]
 
 [node name="Gun" type="Node2D" unique_id=1243215424]
+script = ExtResource("1_6qmb8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1891330144]
 position = Vector2(12, -5)
 texture = ExtResource("1_vk1bi")
+
+[node name="Nuzzle" type="Marker2D" parent="." unique_id=703556954]
+position = Vector2(25, -8)

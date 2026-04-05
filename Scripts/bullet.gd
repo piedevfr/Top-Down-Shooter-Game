@@ -1,11 +1,12 @@
+class_name Bullet
 extends Node2D
 
-var speed = 300
+const SPEED = 400
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	rotation = get_parent().rotation
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-		position *= speed
+	position += transform.x * SPEED * delta
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

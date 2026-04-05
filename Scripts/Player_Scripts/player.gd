@@ -1,18 +1,16 @@
+class_name Player
 extends CharacterBody2D
 
+@onready var ammo: Label = $Ammo
 
-var speed = 120.0
-@export var gun : Node2D
+var speed = 150.0
+@export var gun : Gun
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
-	rotate_weapon(gun)
+	ammo.text = "Ammo: %s" % gun.ammo
 	
 	move_and_slide()
-
-func rotate_weapon(weapon : Node2D):
-	var mouse_pos = get_global_mouse_position()
-	weapon.look_at(mouse_pos)
