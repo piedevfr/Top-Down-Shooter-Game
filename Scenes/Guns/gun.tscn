@@ -12,3 +12,5 @@ texture = ExtResource("1_vk1bi")
 
 [node name="Nuzzle" type="Marker2D" parent="." unique_id=703556954]
 position = Vector2(25, -8)
+
+[node name="#Test_Camera" type="Camera2D" parent="." unique_id=970875449]

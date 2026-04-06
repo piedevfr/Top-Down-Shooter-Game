@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ctqntwah3ojlw"]
+
+[ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="1_tm3c0"]
+[ext_resource type="Script" uid="uid://ckk8xijskxji2" path="res://Top-Down-Shooter-Game/Scripts/Classes/class_Hurtbox.gd" id="2_5ufxb"]
+[ext_resource type="PackedScene" uid="uid://31mm4b46mp6t" path="res://Top-Down-Shooter-Game/Scenes/Guns/gun.tscn" id="3_6qvph"]
+
+[sub_resource type="GDScript" id="GDScript_83uqr"]
+script/source = "extends Node2D
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+func _on_hurtbox_hitbox_detected(area : Hitbox, damage_amount : int) -> void:
+	print(\"damage  \", area, \"  \", damage_amount)
+	sprite_2d.health -= damage_amount
+"
+
+[sub_resource type="GDScript" id="GDScript_tm3c0"]
+script/source = "extends Sprite2D
+
+var health = 100
+func _ready() -> void:
+	health = 100
+
+func _process(_delta: float) -> void:
+	if health <= 0:
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyjdh"]
+size = Vector2(121, 120)
+
+[node name="Node2D" type="Node2D" unique_id=1862482167]
+script = SubResource("GDScript_83uqr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1044583899]
+position = Vector2(471, -192)
+texture = ExtResource("1_tm3c0")
+script = SubResource("GDScript_tm3c0")
+
+[node name="Hurtbox" type="Area2D" parent="Sprite2D" unique_id=804252095]
+script = ExtResource("2_5ufxb")
+metadata/_custom_type_script = "uid://ckk8xijskxji2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hurtbox" unique_id=675297055]
+shape = SubResource("RectangleShape2D_gyjdh")
+
+[node name="Gun" parent="." unique_id=1243215424 instance=ExtResource("3_6qvph")]
+
+[connection signal="hitbox_detected" from="Sprite2D/Hurtbox" to="." method="_on_hurtbox_hitbox_detected"]
