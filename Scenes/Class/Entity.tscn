@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c8vhuf3f3giye"]
+
+[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/Class_Entity.gd" id="1_ws6la"]
+
+[node name="Entity" type="CharacterBody2D" unique_id=2038145908]
+script = ExtResource("1_ws6la")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=627692333]
+
+[node name="HurtboxCollider" type="Area2D" parent="." unique_id=395548925]
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxCollider" unique_id=1957575442]
+
+[connection signal="body_entered" from="HurtboxCollider" to="." method="_on_hurtbox_collider_body_entered"]

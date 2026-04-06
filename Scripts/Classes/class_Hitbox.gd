@@ -2,4 +2,4 @@ extends Area2D
 
 class_name Hitbox
 
-@export var damage_amount : int
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
