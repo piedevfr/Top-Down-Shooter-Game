@@ -1,3 +1,3 @@
 extends Node
 
-const BULLET_DAMAGE : int = 20
+const BULLET_DAMAGE : int = 10

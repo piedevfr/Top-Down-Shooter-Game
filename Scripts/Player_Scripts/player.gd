@@ -6,6 +6,9 @@ extends CharacterBody2D
 var speed = 150.0
 @export var gun : Gun
 
+func _ready() -> void:
+	position = Vector2(0,0)
+
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
