@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://your_uid_here"]
+[gd_scene format=3 uid="uid://ckyahypl4cl12"]
 
 [ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/Class_Entity.gd" id="1_ws6la"]
 [ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_5dgdn"]
@@ -11,3 +11,27 @@ radius = 33.06055
 
 [node name="Entity" type="CharacterBody2D" unique_id=2038145908]
 script = ExtResource("1_ws6la")
+
+[node name="Health" type="Label" parent="." unique_id=1171900998]
+offset_left = -36.0
+offset_top = -38.0
+offset_right = 36.0
+offset_bottom = -15.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1082829403]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_5dgdn")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=627692333]
+shape = SubResource("CircleShape2D_a3ek2")
+debug_color = Color(0.9330957, 0, 0.030336043, 0.41960785)
+
+[node name="HurtboxCollider" type="Area2D" parent="." unique_id=395548925]
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxCollider" unique_id=1957575442]
+shape = SubResource("CircleShape2D_62kcb")
+
+[connection signal="area_entered" from="HurtboxCollider" to="." method="_on_hurtbox_collider_area_entered"]
+[connection signal="body_entered" from="HurtboxCollider" to="." method="_on_hurtbox_collider_body_entered"]
