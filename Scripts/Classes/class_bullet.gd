@@ -10,4 +10,7 @@ func _process(delta: float) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
-	print("left tree")
+
+
+func _on_hitbox_body_collide() -> void:
+	queue_free()
