@@ -1,15 +1,37 @@
-[gd_scene format=3 uid="uid://31mm4b46mp6t"]
+[gd_scene load_steps=5 format=3 uid="uid://ckyahypl4cl12"]
 
-[ext_resource type="Script" uid="uid://co1brkav7crcm" path="res://Top-Down-Shooter-Game/Scenes/Guns/gun.gd" id="1_6qmb8"]
-[ext_resource type="Texture2D" uid="uid://db17svmbix0ft" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Gun.png" id="1_vk1bi"]
+[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/Class_Entity.gd" id="1_ws6la"]
+[ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_5dgdn"]
 
-[node name="Gun" type="Node2D" unique_id=1449033526]
-script = ExtResource("1_6qmb8")
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3ek2"]
+radius = 19.723083
 
-[node name="Gun_Texture" type="Sprite2D" parent="." unique_id=1978093100]
-position = Vector2(37, 0)
-texture = ExtResource("1_vk1bi")
+[sub_resource type="CircleShape2D" id="CircleShape2D_62kcb"]
+radius = 33.06055
 
-[node name="Nuzzle" type="Marker2D" parent="." unique_id=1577878330]
-position = Vector2(51, -3)
-gizmo_extents = 10.5
+[node name="Entity" type="CharacterBody2D" unique_id=2038145908]
+script = ExtResource("1_ws6la")
+
+[node name="Health" type="Label" parent="." unique_id=1171900998]
+offset_left = -36.0
+offset_top = -38.0
+offset_right = 36.0
+offset_bottom = -15.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1082829403]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_5dgdn")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=627692333]
+shape = SubResource("CircleShape2D_a3ek2")
+debug_color = Color(0.9330957, 0, 0.030336043, 0.41960785)
+
+[node name="HurtboxCollider" type="Area2D" parent="." unique_id=395548925]
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxCollider" unique_id=1957575442]
+shape = SubResource("CircleShape2D_62kcb")
+
+[connection signal="area_entered" from="HurtboxCollider" to="." method="_on_hurtbox_collider_area_entered"]
+[connection signal="body_entered" from="HurtboxCollider" to="." method="_on_hurtbox_collider_body_entered"]

@@ -19,17 +19,17 @@ func _process(delta: float) -> void:
 	if current_state:
 		current_state.update(delta)
 		
-	
+	print(current_state)
 
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
 
-func on_child_tansitioned(state, new_state_names):
+func on_child_tansitioned(state, new_state_name):
 	if state != current_state:
 		return
 	
-	var new_state = states.get(new_state_names)
+	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
 		return
 	
@@ -38,4 +38,3 @@ func on_child_tansitioned(state, new_state_names):
 	
 	new_state.enter()
 	current_state = new_state
-	print("change")
