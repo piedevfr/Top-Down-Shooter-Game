@@ -1,24 +1,27 @@
 [gd_scene format=3 uid="uid://clcl54ehxdwii"]
 
-[ext_resource type="Script" uid="uid://cc2b0di68wjn2" path="res://Top-Down-Shooter-Game/Scenes/Bullet/bullet.gd" id="1_tatgm"]
+[ext_resource type="Script" uid="uid://bwncknwjsju2" path="res://Top-Down-Shooter-Game/Scripts/Classes/class_bullet.gd" id="1_tatgm"]
 [ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Top-Down-Shooter-Game/Assets/Sprites/Bullet.png" id="2_qx8lh"]
+[ext_resource type="Script" uid="uid://dgjuahvt21mt1" path="res://Top-Down-Shooter-Game/Scripts/Classes/class_Hitbox.gd" id="3_qx8lh"]
 
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_37ypk"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qx8lh"]
+size = Vector2(4.8970675, 1.8094252)
 
 [node name="Bullet" type="Node2D" unique_id=43902502]
 script = ExtResource("1_tatgm")
+SPEED = 4500
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1093677827]
 texture = ExtResource("2_qx8lh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=850625078]
 
-[node name="Hit" type="Area2D" parent="." unique_id=1860461565]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1205668408]
+script = ExtResource("3_qx8lh")
+metadata/_custom_type_script = "uid://dgjuahvt21mt1"
 
-[node name="Hit_Radius" type="CollisionShape2D" parent="Hit" unique_id=500038973]
-shape = SubResource("CircleShape2D_37ypk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=753028667]
+position = Vector2(-0.008239508, -0.5171413)
+shape = SubResource("RectangleShape2D_qx8lh")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="area_entered" from="Hit" to="." method="_on_hit_area_entered"]

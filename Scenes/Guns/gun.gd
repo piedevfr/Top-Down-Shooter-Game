@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var nuzzle = $Nuzzle
 const BULLET := preload("res://Top-Down-Shooter-Game/Scenes/Bullet/bullet.tscn")
-var ammo = 20
+@export var ammo = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

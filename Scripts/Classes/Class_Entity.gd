@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 		health_label.visible = true
 
 func _physics_process(delta: float) -> void:
-	position = position.move_toward(player.position, Speed * delta)
+	move_to_player(delta)
 	if Health <= 0:
 		die()
 	
@@ -30,5 +30,8 @@ func die():
 	queue_free()
 
 func _on_hurtbox_collider_area_entered(area: Area2D) -> void:
-	Health -= Global.BULLET_DAMAGE
+	#Health -= Global.BULLET_DAMAGE
 	area.get_parent().queue_free()
+
+func move_to_player(delta : float):
+		position = position.move_toward(player.position, Speed * delta)

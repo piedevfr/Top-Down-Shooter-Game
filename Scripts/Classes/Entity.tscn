@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckyahypl4cl12"]
 
-[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/Class_Entity.gd" id="1_qjqld"]
+[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/class_Entity.gd" id="1_qjqld"]
 [ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_ebik4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3ek2"]
