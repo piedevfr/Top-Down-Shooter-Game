@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clcl54ehxdwii"]
 
-[ext_resource type="Script" uid="uid://cc2b0di68wjn2" path="res://Top-Down-Shooter-Game/Scripts/Classes/class_bullet.gd" id="1_37ypk"]
+[ext_resource type="Script" uid="uid://cc2b0di68wjn2" path="res://Top-Down-Shooter-Game/Scripts/class_bullet.gd" id="1_37ypk"]
 [ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Bullet.png" id="2_x335h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_37ypk"]
