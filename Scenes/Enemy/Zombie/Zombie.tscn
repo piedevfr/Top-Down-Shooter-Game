@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c8kgfdbldayyp" path="res://Top-Down-Shooter-Game/Scripts/Classes/StateMachine/State_Machine.gd" id="3_2oho1"]
 [ext_resource type="Script" uid="uid://b6uebixtgqsla" path="res://Top-Down-Shooter-Game/Scenes/Enemy/Zombie/ZombieFollow.gd" id="4_0v2rf"]
 [ext_resource type="Script" uid="uid://chfwndh4j2df4" path="res://Top-Down-Shooter-Game/Scenes/Enemy/Zombie/ZombieBite.gd" id="5_2oho1"]
+[ext_resource type="PackedScene" uid="uid://bs5h1bgcfcp2c" path="res://Top-Down-Shooter-Game/Scenes/test_player.tscn" id="6_olskw"]
 
 [sub_resource type="GDScript" id="GDScript_2oho1"]
 script/source = "extends CharacterBody2D
@@ -17,52 +18,67 @@ func _on_hurtbox_2_hitbox_detected(hitbox : Hitbox , damage_amount : float) -> v
 func _process(delta: float) -> void:
 	if health <= 0:
 		queue_free()
+
+
+func _on_proximity_sensor_body_entered(body: Node2D) -> void:
+	if body is Player:
+		print(\"ar\")
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf7yl"]
 size = Vector2(66, 60)
 
-[node name="Zombie" type="CharacterBody2D" unique_id=1782255867]
+[node name="Node2D" type="Node2D" unique_id=1004094591]
+
+[node name="Zombie" type="CharacterBody2D" parent="." unique_id=1782255867]
+motion_mode = 1
 script = SubResource("GDScript_2oho1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797101212]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zombie" unique_id=1797101212]
 shape = SubResource("RectangleShape2D_lf7yl")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=432551843]
+[node name="Hurtbox" type="Area2D" parent="Zombie" unique_id=432551843]
 script = ExtResource("1_buxki")
 metadata/_custom_type_script = "uid://ckk8xijskxji2"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=892693939]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zombie/Hurtbox" unique_id=892693939]
 shape = SubResource("RectangleShape2D_lf7yl")
 
-[node name="Placeholder" type="Sprite2D" parent="." unique_id=1732958551]
+[node name="Placeholder" type="Sprite2D" parent="Zombie" unique_id=1732958551]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_0v2rf")
 
-[node name="State_Machine" type="Node" parent="." unique_id=1848040684 node_paths=PackedStringArray("initial_state")]
+[node name="State_Machine" type="Node" parent="Zombie" unique_id=1848040684 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_2oho1")
-initial_state = NodePath("ZombieFollow")
+initial_state = NodePath("ZombieBite")
 metadata/_custom_type_script = "uid://c8kgfdbldayyp"
 
-[node name="ZombieFollow" type="Node" parent="State_Machine" unique_id=1895997899]
+[node name="ZombieFollow" type="Node" parent="Zombie/State_Machine" unique_id=1895997899]
 script = ExtResource("4_0v2rf")
 metadata/_custom_type_script = "uid://b6uebixtgqsla"
 
-[node name="ZombieBite" type="Node" parent="State_Machine" unique_id=2106654323]
+[node name="ZombieBite" type="Node" parent="Zombie/State_Machine" unique_id=2106654323]
 script = ExtResource("5_2oho1")
 metadata/_custom_type_script = "uid://chfwndh4j2df4"
 
-[node name="ProximitySensor" type="Area2D" parent="." unique_id=176794362]
+[node name="ProximitySensor" type="Area2D" parent="Zombie" unique_id=176794362]
+priority = 1
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="ProximitySensor" unique_id=269391257]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Zombie/ProximitySensor" unique_id=269391257]
 shape = SubResource("RectangleShape2D_lf7yl")
 
-[node name="Hurtbox2" type="Area2D" parent="." unique_id=654156019]
+[node name="Hurtbox2" type="Area2D" parent="Zombie" unique_id=654156019]
 script = ExtResource("1_buxki")
 metadata/_custom_type_script = "uid://ckk8xijskxji2"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox2" unique_id=1582204329]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zombie/Hurtbox2" unique_id=1582204329]
 shape = SubResource("RectangleShape2D_lf7yl")
 
-[connection signal="body_entered" from="ProximitySensor" to="State_Machine/ZombieFollow" method="_on_proximity_sensor_body_entered"]
-[connection signal="hitbox_detected" from="Hurtbox2" to="." method="_on_hurtbox_2_hitbox_detected"]
+[node name="CharacterBody2D" parent="." unique_id=1522920680 instance=ExtResource("6_olskw")]
+position = Vector2(181, -134)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1705496089]
+
+[connection signal="body_entered" from="Zombie/ProximitySensor" to="Zombie" method="_on_proximity_sensor_body_entered"]
+[connection signal="body_entered" from="Zombie/ProximitySensor" to="Zombie/State_Machine/ZombieFollow" method="_on_proximity_sensor_body_entered"]
+[connection signal="hitbox_detected" from="Zombie/Hurtbox2" to="Zombie" method="_on_hurtbox_2_hitbox_detected"]

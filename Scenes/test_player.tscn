@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bs5h1bgcfcp2c"]
+
+[ext_resource type="Texture2D" uid="uid://sv1vw5pdfpcj" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Player.png" id="1_15cyu"]
+[ext_resource type="PackedScene" uid="uid://31mm4b46mp6t" path="res://Top-Down-Shooter-Game/Scenes/Guns/gun.tscn" id="2_kushl"]
+
+[sub_resource type="GDScript" id="GDScript_5a7s8"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 10000.0
+const JUMP_VELOCITY = -400.0
+
+
+func _physics_process(delta: float) -> void:
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_vector(\"a\", \"d\", \"w\", \"s\")
+	if direction:
+		velocity = direction * SPEED * delta
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rj8r"]
+radius = 15.033297
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1522920680 groups=["Player"]]
+script = SubResource("GDScript_5a7s8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=439090468]
+shape = SubResource("CircleShape2D_8rj8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1382546488]
+texture = ExtResource("1_15cyu")
+
+[node name="Gun" parent="." unique_id=1449033526 instance=ExtResource("2_kushl")]

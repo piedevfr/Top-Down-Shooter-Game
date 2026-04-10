@@ -1,7 +1,7 @@
 class_name Gun
 extends Node2D
 
-@onready var nuzzle = $Nuzzle
+@onready var nuzzle: Marker2D = $Nuzzle
 const BULLET := preload("res://Top-Down-Shooter-Game/Scenes/Guns/Bullet/bullet.tscn")
 var ammo = 20
 

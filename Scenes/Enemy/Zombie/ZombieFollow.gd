@@ -16,11 +16,11 @@ func physics_update(delta : float):
 	var direction = target_player.global_position - zombie.global_position
 	zombie.velocity = direction.normalized() * move_speed
 	
-	print(direction.length())
 	zombie.move_and_slide()
 
 
 func _on_proximity_sensor_body_entered(body: Node2D) -> void:
 	if body is Player:
-		transition.emit(ZombieFollow , ZombieBite)
-		zombie.queue_free()
+		#transition.emit(ZombieFollow , ZombieBite)
+		#zombie.queue_free()
+		print("touched")
