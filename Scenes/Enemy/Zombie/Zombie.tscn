@@ -4,36 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_0v2rf"]
 [ext_resource type="Script" uid="uid://c8kgfdbldayyp" path="res://Top-Down-Shooter-Game/Scripts/Classes/StateMachine/State_Machine.gd" id="3_2oho1"]
 [ext_resource type="Script" uid="uid://b6uebixtgqsla" path="res://Top-Down-Shooter-Game/Scenes/Enemy/Zombie/ZombieFollow.gd" id="4_0v2rf"]
-[ext_resource type="Script" uid="uid://chfwndh4j2df4" path="res://Top-Down-Shooter-Game/Scenes/Enemy/Zombie/ZombieBite.gd" id="5_2oho1"]
-
-[sub_resource type="GDScript" id="GDScript_2oho1"]
-script/source = "extends CharacterBody2D
-
-var health = 120
-
-func _on_hurtbox_2_hitbox_detected(hitbox : Hitbox , damage_amount : float) -> void:
-	health -= 20
-
-func _process(delta: float) -> void:
-	if health <= 0:
-		queue_free()
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf7yl"]
-size = Vector2(66, 60)
+size = Vector2(47, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c1q6"]
+size = Vector2(47, 44)
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1782255867]
-script = SubResource("GDScript_2oho1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797101212]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_lf7yl")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=432551843]
 script = ExtResource("1_buxki")
 metadata/_custom_type_script = "uid://ckk8xijskxji2"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=892693939]
-shape = SubResource("RectangleShape2D_lf7yl")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2042969408]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_0c1q6")
 
 [node name="Placeholder" type="Sprite2D" parent="." unique_id=1732958551]
 scale = Vector2(0.4, 0.4)
@@ -47,22 +37,3 @@ metadata/_custom_type_script = "uid://c8kgfdbldayyp"
 [node name="ZombieFollow" type="Node" parent="State_Machine" unique_id=1895997899]
 script = ExtResource("4_0v2rf")
 metadata/_custom_type_script = "uid://b6uebixtgqsla"
-
-[node name="ZombieBite" type="Node" parent="State_Machine" unique_id=2106654323]
-script = ExtResource("5_2oho1")
-metadata/_custom_type_script = "uid://chfwndh4j2df4"
-
-[node name="ProximitySensor" type="Area2D" parent="." unique_id=176794362]
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="ProximitySensor" unique_id=269391257]
-shape = SubResource("RectangleShape2D_lf7yl")
-
-[node name="Hurtbox2" type="Area2D" parent="." unique_id=654156019]
-script = ExtResource("1_buxki")
-metadata/_custom_type_script = "uid://ckk8xijskxji2"
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox2" unique_id=1582204329]
-shape = SubResource("RectangleShape2D_lf7yl")
-
-[connection signal="body_entered" from="ProximitySensor" to="State_Machine/ZombieFollow" method="_on_proximity_sensor_body_entered"]
-[connection signal="hitbox_detected" from="Hurtbox2" to="." method="_on_hurtbox_2_hitbox_detected"]

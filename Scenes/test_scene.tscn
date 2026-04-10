@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://sv1vw5pdfpcj" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Player.png" id="1_5a7s8"]
 [ext_resource type="PackedScene" uid="uid://cb0ip8xjmp56k" path="res://Top-Down-Shooter-Game/Scenes/Enemy/Zombie/Zombie.tscn" id="1_tdluv"]
-[ext_resource type="PackedScene" uid="uid://31mm4b46mp6t" path="res://Top-Down-Shooter-Game/Scenes/Guns/gun.tscn" id="2_kngt6"]
 
 [sub_resource type="GDScript" id="GDScript_5a7s8"]
 script/source = "extends CharacterBody2D
@@ -26,7 +25,6 @@ func _physics_process(delta: float) -> void:
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rj8r"]
-radius = 15.033297
 
 [node name="Node2D" type="Node2D" unique_id=1195316793]
 
@@ -39,15 +37,7 @@ shape = SubResource("CircleShape2D_8rj8r")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1304393178]
 texture = ExtResource("1_5a7s8")
 
-[node name="Gun" parent="CharacterBody2D" unique_id=1243215424 instance=ExtResource("2_kngt6")]
-
 [node name="Zombie" parent="." unique_id=1782255867 instance=ExtResource("1_tdluv")]
 position = Vector2(391, -183)
-
-[node name="Zombie2" parent="." unique_id=255375748 instance=ExtResource("1_tdluv")]
-position = Vector2(-162, -290)
-
-[node name="Zombie3" parent="." unique_id=2019157689 instance=ExtResource("1_tdluv")]
-position = Vector2(319, -114)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1084449348]
