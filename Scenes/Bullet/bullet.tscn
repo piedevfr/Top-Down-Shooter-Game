@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://clcl54ehxdwii"]
 
-[ext_resource type="Script" uid="uid://cc2b0di68wjn2" path="res://Top-Down-Shooter-Game/Scripts/Bullet_Scripts/bullet.gd" id="1_tatgm"]
-[ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo/Bullet.png" id="2_qx8lh"]
+[ext_resource type="Script" uid="uid://cc2b0di68wjn2" path="res://Top-Down-Shooter-Game/Scenes/Bullet/bullet.gd" id="1_tatgm"]
+[ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Top-Down-Shooter-Game/Assets/Sprites/Bullet.png" id="2_qx8lh"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_37ypk"]
 radius = 6.0

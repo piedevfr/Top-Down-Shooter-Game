@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c8vhuf3f3giye"]
+[gd_scene format=3 uid="uid://ckyahypl4cl12"]
 
-[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/Class_Entity.gd" id="1_ws6la"]
-[ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_5dgdn"]
+[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/Class_Entity.gd" id="1_qjqld"]
+[ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_ebik4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3ek2"]
 radius = 19.723083
@@ -10,7 +10,7 @@ radius = 19.723083
 radius = 33.06055
 
 [node name="Entity" type="CharacterBody2D" unique_id=2038145908]
-script = ExtResource("1_ws6la")
+script = ExtResource("1_qjqld")
 
 [node name="Health" type="Label" parent="." unique_id=1171900998]
 offset_left = -36.0
@@ -22,7 +22,7 @@ vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1082829403]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_5dgdn")
+texture = ExtResource("2_ebik4")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=627692333]
 shape = SubResource("CircleShape2D_a3ek2")

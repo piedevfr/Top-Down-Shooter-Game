@@ -1,17 +1,23 @@
 extends CharacterBody2D
 
 class_name Entity
+@export var show_health : bool
 
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var hurtbox_collider: Area2D = $HurtboxCollider
 @onready var health_label: Label = $Health
 @onready var player: Player = $"../Player"
+@onready var hurt_box
 
-var Speed = 20
-var Health : int = 100
+@export var Speed = 20
+@export var Health : int = 100
 
 func _process(_delta: float) -> void:
-	health_label.text = "Health: %s" %Health
+	if show_health == true:
+		health_label.visible = true
+		health_label.text = "Health: %s" %Health
+	elif show_health == false:
+		health_label.visible = true
 
 func _physics_process(delta: float) -> void:
 	position = position.move_toward(player.position, Speed * delta)
