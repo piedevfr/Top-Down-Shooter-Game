@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://ccpdh1pmlptdd"]
 
 [ext_resource type="PackedScene" uid="uid://c45pt5gb26u5q" path="res://Top-Down-Shooter-Game/Scenes/Player/player.tscn" id="1_1psht"]
-[ext_resource type="PackedScene" uid="uid://c8vhuf3f3giye" path="res://Top-Down-Shooter-Game/Scenes/Class/Entity.tscn" id="2_444if"]
+[ext_resource type="PackedScene" uid="uid://ckyahypl4cl12" path="res://Top-Down-Shooter-Game/Scripts/Classes/Entity.tscn" id="2_444if"]
 
 [node name="Main" type="Node2D" unique_id=2026864446]
 
 [node name="Player" parent="." unique_id=222796903 instance=ExtResource("1_1psht")]
 position = Vector2(-5, 9)
+show_health = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=496383880]
 
@@ -18,4 +19,4 @@ offset_bottom = 179.0
 text = "R to Reload"
 
 [node name="Entity" parent="." unique_id=2038145908 instance=ExtResource("2_444if")]
-position = Vector2(205, 89)
+position = Vector2(287, -64)
