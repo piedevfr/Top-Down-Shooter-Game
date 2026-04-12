@@ -1,5 +1,6 @@
-class_name Bullet
 extends Node2D
+class_name Bullet
+
 
 @export var SPEED = 1500
 @onready var hitbox : Hitbox
