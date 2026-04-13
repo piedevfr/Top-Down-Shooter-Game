@@ -23,15 +23,14 @@ func _physics_process(delta: float) -> void:
 	move_to_player(delta)
 	if Health <= 0:
 		die()
-	
 	move_and_slide()
 
 func die():
 	queue_free()
 
-func _on_hurtbox_collider_area_entered(area: Area2D) -> void:
-	#Health -= Global.BULLET_DAMAGE
-	area.get_parent().queue_free()
+func _on_hurtbox_collider_area_entered(bullet: Bullet) -> void:
+	bullet.get_parent().queue_free()
+	Health -= Global.BULLET_DAMAGE
 
 func move_to_player(delta : float):
-		position = position.move_toward(player.position, Speed * delta)
+	position = position.move_toward(player.position, Speed * delta)

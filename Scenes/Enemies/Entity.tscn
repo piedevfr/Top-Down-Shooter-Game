@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckyahypl4cl12"]
 
-[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Classes/class_Entity.gd" id="1_qjqld"]
+[ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Enemy_Scripts/Entity.gd" id="1_qjqld"]
 [ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_ebik4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3ek2"]
@@ -12,6 +12,7 @@ radius = 33.06055
 [node name="Entity" type="CharacterBody2D" unique_id=2038145908]
 motion_mode = 1
 script = ExtResource("1_qjqld")
+show_health = true
 
 [node name="Health" type="Label" parent="." unique_id=1171900998]
 offset_left = -36.0

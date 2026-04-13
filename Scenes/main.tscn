@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccpdh1pmlptdd"]
 
 [ext_resource type="PackedScene" uid="uid://c45pt5gb26u5q" path="res://Top-Down-Shooter-Game/Scenes/Player/player.tscn" id="1_1psht"]
-[ext_resource type="PackedScene" uid="uid://ckyahypl4cl12" path="res://Top-Down-Shooter-Game/Scripts/Classes/Entity.tscn" id="2_444if"]
+[ext_resource type="PackedScene" uid="uid://ckyahypl4cl12" path="res://Top-Down-Shooter-Game/Scenes/Enemies/Entity.tscn" id="2_444if"]
 
 [node name="Main" type="Node2D" unique_id=2026864446]
 
