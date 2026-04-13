@@ -28,9 +28,9 @@ func _physics_process(delta: float) -> void:
 func die():
 	queue_free()
 
-func _on_hurtbox_collider_area_entered(bullet: Bullet) -> void:
-	bullet.get_parent().queue_free()
+func _on_hurtbox_collider_area_entered(bullet: Node2D) -> void:
 	Health -= Global.BULLET_DAMAGE
+	bullet.get_parent().queue_free()
 
 func move_to_player(delta : float):
 	position = position.move_toward(player.position, Speed * delta)
