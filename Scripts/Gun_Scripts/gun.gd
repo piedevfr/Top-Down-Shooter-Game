@@ -11,13 +11,16 @@ var can_shoot : bool = true
 @onready var shoot_timer: Timer = $shoot_timer
 @export var reload_time : float = 1
 var can_reload : bool
+var is_reloading : bool
 @export var fire_rate : float = 0.1 # the wait time for timer
+
 
 
 func _ready() -> void:
 	can_shoot = true
 
 func _process(delta: float) -> void:
+	print(ammo)
 	rotate_weapon()
 	#timer.wait_time = fire_rate
 	if Input.is_action_pressed("shoot") and ammo > 0 :
@@ -45,20 +48,23 @@ func shoot():
 	bullet_instance.global_position = nuzzle.global_position
 	bullet_instance.rotation = rotation
 	ammo -= 1
+	animation_player.play("gun_shoot")
 	can_shoot = false
 	shoot_timer.start(fire_rate)
 	can_reload = false
+	is_reloading = false
 
 
 
 func reload():
 	if ammo < 20:
 		can_reload = true
-	if can_reload == true:
+	if can_reload == true and is_reloading == false:
 		animation_player.play("reload")
 		for i in 5:
 			if ammo < 20:
 				if can_reload == true:
+					is_reloading = true
 					ammo += 4
 					await get_tree().create_timer(reload_time).timeout
 		if can_reload == true:
