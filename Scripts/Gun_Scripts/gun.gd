@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") and ammo > 0 :
 		if can_shoot == true:
 			shoot()
-			animation_player.play("shoot")
 		
 	if Input.is_action_just_pressed("reload"):
 		reload()

@@ -26,6 +26,4 @@ position = Vector2(48, -9)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1566966707]
 libraries/ = SubResource("AnimationLibrary_op0jl")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=168005744]
-
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
