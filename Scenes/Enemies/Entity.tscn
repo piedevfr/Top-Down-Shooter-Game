@@ -12,7 +12,6 @@ radius = 33.06055
 [node name="Entity" type="CharacterBody2D" unique_id=2038145908]
 motion_mode = 1
 script = ExtResource("1_qjqld")
-show_health = true
 
 [node name="Health" type="Label" parent="." unique_id=1171900998]
 offset_left = -36.0

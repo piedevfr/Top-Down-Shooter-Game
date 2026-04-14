@@ -2,8 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 @onready var ammo: Label = $Ammo
-@export var show_ammo : bool
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var show_ammo : bool
 @export var gun : Gun
 
 var speed = 150.0
@@ -21,5 +22,13 @@ func _physics_process(_delta: float) -> void:
 		ammo.text = "Ammo: %s" % gun.ammo
 	elif show_ammo == false:
 		ammo.visible = false
+	rotate_sprite()
 	
 	move_and_slide()
+
+func rotate_sprite():
+	var mouse_pos = get_global_mouse_position()
+	if mouse_pos.x < global_position.x:
+		animated_sprite.flip_h = true
+	else:
+		animated_sprite.flip_h = false

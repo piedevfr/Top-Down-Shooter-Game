@@ -1,28 +1,63 @@
 [gd_scene format=3 uid="uid://c45pt5gb26u5q"]
 
-[ext_resource type="Texture2D" uid="uid://sv1vw5pdfpcj" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo_Sprites/Player.png" id="1_3wb1g"]
 [ext_resource type="Script" uid="uid://dy6n3j0qmynps" path="res://Top-Down-Shooter-Game/Scripts/Player_Scripts/player.gd" id="1_tf12g"]
+[ext_resource type="Texture2D" uid="uid://beiv77n31agvc" path="res://Top-Down-Shooter-Game/Assets/Sprites/Player/Shooter_guy_idle.png" id="2_tf12g"]
 [ext_resource type="PackedScene" uid="uid://31mm4b46mp6t" path="res://Top-Down-Shooter-Game/Scenes/Guns/gun.tscn" id="3_4weey"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3wb1g"]
-radius = 15.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4weey"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_givk1"]
+atlas = ExtResource("2_tf12g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1dga"]
+atlas = ExtResource("2_tf12g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnirp"]
+atlas = ExtResource("2_tf12g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0aks"]
+atlas = ExtResource("2_tf12g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0r1g"]
+atlas = ExtResource("2_tf12g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tf12g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_givk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1dga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnirp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0aks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0r1g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=222796903 node_paths=PackedStringArray("gun")]
 script = ExtResource("1_tf12g")
-show_ammo = true
 gun = NodePath("Gun")
 metadata/_edit_horizontal_guides_ = [-87.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1503373710]
-texture = ExtResource("1_3wb1g")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022014073]
-shape = SubResource("CircleShape2D_3wb1g")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=832081949]
-
-[node name="Gun" parent="." unique_id=1243215424 instance=ExtResource("3_4weey")]
-fire_rate = 0.3
+shape = SubResource("CapsuleShape2D_4weey")
 
 [node name="Ammo" type="Label" parent="." unique_id=777782551]
 offset_left = -33.0
@@ -31,3 +66,12 @@ offset_right = 33.0
 offset_bottom = -16.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=706844233]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_tf12g")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Gun" parent="." unique_id=1243215424 instance=ExtResource("3_4weey")]
+fire_rate = 0.3
