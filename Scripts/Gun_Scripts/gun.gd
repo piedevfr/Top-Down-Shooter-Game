@@ -21,7 +21,7 @@ func _ready() -> void:
 	can_shoot = true
 	can_reload = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	rotate_weapon()
 	#timer.wait_time = fire_rate
 	if Input.is_action_pressed("shoot") and ammo > 0 :

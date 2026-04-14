@@ -14,6 +14,6 @@ func _ready() -> void:
 func _on_body_entered(body : Node2D):
 	hitbox_collided.emit(body)
 
-func _on_hitbox_collided(body : Node2D):
+func _on_hitbox_collided(_body : Node2D):
 	var parent = get_parent()
 	parent.queue_free()

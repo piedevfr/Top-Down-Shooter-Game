@@ -1,7 +1,5 @@
 extends Node2D
 
-class_name Bullet
-
 const SPEED = 800
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

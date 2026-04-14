@@ -9,6 +9,7 @@ radius = 15.0
 
 [node name="Player" type="CharacterBody2D" unique_id=222796903 node_paths=PackedStringArray("gun")]
 script = ExtResource("1_tf12g")
+show_ammo = true
 gun = NodePath("Gun")
 metadata/_edit_horizontal_guides_ = [-87.0]
 
