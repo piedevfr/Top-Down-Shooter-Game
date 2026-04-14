@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y4vtaoixsj24"
-path="res://.godot/imported/Bullet.png-0185f52a05d85f5a4d2514311dc68229.ctex"
+uid="uid://db17svmbix0ft"
+path="res://.godot/imported/Gun.png-9ef87d96451492cfd903e55f9f37c2c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Top-Down-Shooter-Game/Assets/Sprites/Bullet.png"
-dest_files=["res://.godot/imported/Bullet.png-0185f52a05d85f5a4d2514311dc68229.ctex"]
+source_file="res://Top-Down-Shooter-Game/Assets/Sprites/Demo_Sprites/Gun.png"
+dest_files=["res://.godot/imported/Gun.png-9ef87d96451492cfd903e55f9f37c2c2.ctex"]
 
 [params]
 

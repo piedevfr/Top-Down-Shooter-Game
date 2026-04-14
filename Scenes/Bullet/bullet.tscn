@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://clcl54ehxdwii"]
 
-[ext_resource type="Script" uid="uid://bd37qsvt3p7dw" path="res://Top-Down-Shooter-Game/Scenes/Bullet/bullet.gd" id="1_qx8lh"]
-[ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Top-Down-Shooter-Game/Assets/Sprites/Bullet.png" id="2_qx8lh"]
+[ext_resource type="Script" uid="uid://bxuuqm0r7xd2b" path="res://Top-Down-Shooter-Game/Scripts/Bullet_Scripts/bullet.gd" id="1_qx8lh"]
+[ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo_Sprites/Bullet.png" id="2_qx8lh"]
 [ext_resource type="Script" uid="uid://dgjuahvt21mt1" path="res://Top-Down-Shooter-Game/Scripts/Classes/Hitbox and Hurtbox/class_Hitbox.gd" id="3_qx8lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx8lh"]

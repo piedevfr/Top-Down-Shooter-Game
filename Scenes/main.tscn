@@ -9,9 +9,10 @@
 position = Vector2(-5, 9)
 show_health = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=496383880]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=496383880]
+position = Vector2(5, -9)
 
-[node name="Instructions" type="Label" parent="Camera2D" unique_id=672489840]
+[node name="Instructions" type="Label" parent="Player/Camera2D" unique_id=672489840]
 offset_left = 230.0
 offset_top = 156.0
 offset_right = 318.0

@@ -6,7 +6,6 @@ class_name Entity
 @onready var hurtbox_collider: Area2D = $HurtboxCollider
 @onready var health_label: Label = $Health
 @onready var player: Player = $"../Player"
-@onready var hurt_box
 
 @export var show_health : bool
 @export var Speed = 20
