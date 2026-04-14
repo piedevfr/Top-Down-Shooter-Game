@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 class_name Entity
 
-signal die
-
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var hurtbox_collider: Area2D = $HurtboxCollider
 @onready var health_label: Label = $Health
@@ -22,11 +20,14 @@ func _process(_delta: float) -> void:
 		health_label.visible = true
 
 func _physics_process(delta: float) -> void:
+	move_to_player(delta)
 	if Health <= 0:
 		die()
 	move_and_slide()
 
-
+func die():
+	queue_free()
+	
 func _on_hurtbox_collider_area_entered(bullet: Node2D) -> void:
 	Health -= Global.BULLET_DAMAGE
 	bullet.get_parent().queue_free()
