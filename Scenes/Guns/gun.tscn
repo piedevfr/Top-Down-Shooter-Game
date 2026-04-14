@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://co1brkav7crcm" path="res://Top-Down-Shooter-Game/Scripts/Gun_Scripts/gun.gd" id="1_6qmb8"]
 [ext_resource type="Texture2D" uid="uid://db17svmbix0ft" path="res://Top-Down-Shooter-Game/Assets/Sprites/Gun.png" id="1_vk1bi"]
+[ext_resource type="Animation" path="res://Top-Down-Shooter-Game/Scenes/Guns/gun_shoot.res" id="3_61bi1"]
+[ext_resource type="Animation" path="res://Top-Down-Shooter-Game/Scenes/Guns/reload.res" id="4_pmfcw"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_op0jl"]
+_data = {
+&"gun_shoot": ExtResource("3_61bi1"),
+&"reload": ExtResource("4_pmfcw")
+}
 
 [node name="Gun" type="Node2D" unique_id=1243215424]
 script = ExtResource("1_6qmb8")
@@ -12,3 +20,10 @@ texture = ExtResource("1_vk1bi")
 
 [node name="Nuzzle" type="Marker2D" parent="." unique_id=703556954]
 position = Vector2(48, -9)
+
+[node name="shoot_timer" type="Timer" parent="." unique_id=543058671]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1566966707]
+libraries/ = SubResource("AnimationLibrary_op0jl")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=168005744]

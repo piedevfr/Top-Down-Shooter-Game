@@ -2,25 +2,33 @@ class_name Gun
 extends Node2D
 
 @onready var nuzzle = $Nuzzle
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 const BULLET := preload("res://Top-Down-Shooter-Game/Scenes/Bullet/bullet.tscn")
-@export var ammo = 20
+@export var ammo = 20:
+	set(value):
+		ammo = clamp(value, 0, 20)
+var can_shoot : bool = true
+@onready var shoot_timer: Timer = $shoot_timer
+@export var reload_time : float = 1
+var can_reload : bool
+@export var fire_rate : float = 0.1 # the wait time for timer
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass
+	can_shoot = true
 
-# Called every frame. 'delta' is the elapsed time since the previous fram
 func _process(delta: float) -> void:
 	rotate_weapon()
+	#timer.wait_time = fire_rate
 	if Input.is_action_pressed("shoot") and ammo > 0 :
-		var bullet_instance = BULLET.instantiate()
-		get_tree().root.add_child(bullet_instance)
-		bullet_instance.global_position = nuzzle.global_position
-		bullet_instance.rotation = rotation
-		ammo -= 1
-	if Input.is_action_just_pressed("reload"):
-		ammo = 20
+		if can_shoot == true:
+			shoot()
+			animation_player.play("shoot")
 		
+	if Input.is_action_just_pressed("reload"):
+		reload()
+	
+
 
 func rotate_weapon():
 	var mouse_pos = get_global_mouse_position()
@@ -30,3 +38,31 @@ func rotate_weapon():
 		scale.y = -1
 	else:
 		scale.y = 1
+
+func shoot():
+	var bullet_instance = BULLET.instantiate()
+	get_tree().root.add_child(bullet_instance)
+	bullet_instance.global_position = nuzzle.global_position
+	bullet_instance.rotation = rotation
+	ammo -= 1
+	can_shoot = false
+	shoot_timer.start(fire_rate)
+	can_reload = false
+
+
+
+func reload():
+	if ammo < 20:
+		can_reload = true
+	if can_reload == true:
+		animation_player.play("reload")
+		for i in 5:
+			if ammo < 20:
+				if can_reload == true:
+					ammo += 4
+					await get_tree().create_timer(reload_time).timeout
+		if can_reload == true:
+			animation_player.play_backwards("reload")
+
+func _on_shoot_timer_timeout() -> void:
+	can_shoot = true
