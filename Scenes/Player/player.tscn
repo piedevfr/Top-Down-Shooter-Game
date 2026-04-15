@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dy6n3j0qmynps" path="res://Top-Down-Shooter-Game/Scripts/Player_Scripts/player.gd" id="1_tf12g"]
 [ext_resource type="Texture2D" uid="uid://beiv77n31agvc" path="res://Top-Down-Shooter-Game/Assets/Sprites/Player/Shooter_guy_idle.png" id="2_tf12g"]
 [ext_resource type="PackedScene" uid="uid://31mm4b46mp6t" path="res://Top-Down-Shooter-Game/Scenes/Guns/gun.tscn" id="3_4weey"]
-[ext_resource type="Script" uid="uid://dxl4jwkavfvm7" path="res://Top-Down-Shooter-Game/Scripts/camera.gd" id="4_4weey"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4weey"]
 radius = 6.0
@@ -54,6 +53,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=222796903 node_paths=PackedStringArray("gun")]
 script = ExtResource("1_tf12g")
+show_ammo = true
 gun = NodePath("Gun")
 metadata/_edit_horizontal_guides_ = [-87.0]
 
@@ -75,8 +75,12 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Gun" parent="." unique_id=1243215424 instance=ExtResource("3_4weey")]
+<<<<<<< HEAD
 fire_rate = 0.3
+=======
+fire_rate = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1519872574]
 zoom = Vector2(2.285, 2.285)
 script = ExtResource("4_4weey")
+>>>>>>> 773e38d06a3c610ba6d37259c58af3a10eb38e4f

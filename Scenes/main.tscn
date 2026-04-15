@@ -10,10 +10,10 @@
 script = ExtResource("2_qgjy0")
 
 [node name="Instructions" type="Label" parent="Camera2D" unique_id=672489840]
-offset_left = 230.0
-offset_top = 156.0
-offset_right = 318.0
-offset_bottom = 179.0
+offset_left = 49.0
+offset_top = 60.0
+offset_right = 137.0
+offset_bottom = 83.0
 text = "R to Reload"
 
 [node name="Player" parent="." unique_id=222796903 instance=ExtResource("1_1psht")]
