@@ -8,6 +8,14 @@
 radius = 6.0
 height = 24.0
 
+[sub_resource type="GDScript" id="GDScript_tf12g"]
+script/source = "extends Label
+@onready var gun: Gun = $\"../Gun\"
+
+func _process(delta: float) -> void:
+	text = \"Ammo: %s\" % gun.ammo
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_givk1"]
 atlas = ExtResource("2_tf12g")
 region = Rect2(0, 0, 32, 32)
@@ -51,10 +59,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=222796903 node_paths=PackedStringArray("gun")]
+[node name="Player" type="CharacterBody2D" unique_id=222796903]
 script = ExtResource("1_tf12g")
 show_ammo = true
-gun = NodePath("Gun")
 metadata/_edit_horizontal_guides_ = [-87.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022014073]
@@ -67,6 +74,7 @@ offset_right = 33.0
 offset_bottom = -16.0
 horizontal_alignment = 1
 vertical_alignment = 1
+script = SubResource("GDScript_tf12g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=706844233]
 position = Vector2(0, -5)
@@ -75,7 +83,6 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Gun" parent="." unique_id=1243215424 instance=ExtResource("3_4weey")]
-fire_rate = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1519872574]
-zoom = Vector2(2.285, 2.285)
+zoom = Vector2(4.265, 4.265)
