@@ -5,7 +5,8 @@ extends Node2D
 const SPEED = 800
 
 func _ready() -> void:
-	directional_light_2d.enabled = true
+	#directional_light_2d.enabled = true
+	pass
 
 func _process(delta: float) -> void:
 	position += transform.x * SPEED * delta

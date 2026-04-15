@@ -4,14 +4,13 @@ extends Node2D
 @onready var nuzzle = $Nuzzle
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shoot_timer: Timer = $shoot_timer
-@onready var label: Label = $Label
 
 const BULLET := preload("res://Top-Down-Shooter-Game/Scenes/Bullet/bullet.tscn")
 
 @export var ammo = 20:
 	set(value):
 		ammo = clamp(value, 0, 20)
-@export var reload_time : float = 0.4
+@export var reload_time : float = 0.3
 @export var fire_rate : float = 0.2
 
 var can_shoot : bool = true

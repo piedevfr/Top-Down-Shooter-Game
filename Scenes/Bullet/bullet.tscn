@@ -24,6 +24,7 @@ position = Vector2(-0.008239508, -0.5171413)
 shape = SubResource("RectangleShape2D_qx8lh")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1327713440]
+enabled = false
 color = Color(1, 0.9213333, 0.41000003, 1)
 energy = 0.52
 max_distance = 10.0

@@ -75,7 +75,7 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Gun" parent="." unique_id=1243215424 instance=ExtResource("3_4weey")]
-fire_rate = 0.3
+fire_rate = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1519872574]
 zoom = Vector2(2.285, 2.285)
