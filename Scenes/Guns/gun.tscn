@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://31mm4b46mp6t"]
 
 [ext_resource type="Script" uid="uid://co1brkav7crcm" path="res://Top-Down-Shooter-Game/Scripts/Gun_Scripts/gun.gd" id="1_6qmb8"]
-[ext_resource type="Texture2D" uid="uid://db17svmbix0ft" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo_Sprites/Gun.png" id="1_vk1bi"]
+[ext_resource type="Texture2D" uid="uid://bac8oiark3gb8" path="res://Top-Down-Shooter-Game/Assets/Sprites/Gun/pistol.png" id="2_61bi1"]
 [ext_resource type="Animation" uid="uid://dmgaubx71y7hx" path="res://Top-Down-Shooter-Game/Scenes/Guns/Anims/gun_shoot.res" id="3_61bi1"]
 [ext_resource type="Animation" uid="uid://bov8mjtpo15yd" path="res://Top-Down-Shooter-Game/Scenes/Guns/Anims/reload.res" id="4_pmfcw"]
 
@@ -29,7 +29,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(21, -6)]
+"values": [Vector2(9, -6)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_op0jl"]
@@ -43,11 +43,11 @@ _data = {
 script = ExtResource("1_6qmb8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1891330144]
-position = Vector2(21, -6)
-texture = ExtResource("1_vk1bi")
+position = Vector2(9, -6)
+texture = ExtResource("2_61bi1")
 
 [node name="Nuzzle" type="Marker2D" parent="." unique_id=703556954]
-position = Vector2(50, -9)
+position = Vector2(16, -8)
 
 [node name="shoot_timer" type="Timer" parent="." unique_id=543058671]
 

@@ -57,12 +57,14 @@ func reload():
 		can_reload = true
 	if can_reload == true and is_reloading == false:
 		animation_player.play("reload")
+		can_shoot = false
 		for i in 5:
 			if ammo < 20:
 				if can_reload == true:
 					is_reloading = true
 					ammo += 4
 					await get_tree().create_timer(reload_time).timeout
+					can_shoot = true
 		if can_reload == true:
 			animation_player.play_backwards("reload")
 
