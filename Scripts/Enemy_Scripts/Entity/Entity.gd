@@ -1,15 +1,23 @@
 extends CharacterBody2D
-
 class_name Entity
 
-@onready var hitbox: CollisionShape2D = $Hitbox
-@onready var hurtbox_collider: Area2D = $HurtboxCollider
-@onready var health_label: Label = $Health
-@onready var player: Player = $"../Player"
+
+@onready var hurtbox : Hurtbox
+@onready var health_label : Label = $Health
+@onready var player : Player = $"../Player"
 
 @export var show_health : bool
 @export var Speed = 20
 @export var Health : int = 100
+
+signal die
+
+func _ready() -> void:
+	for child in get_children():
+		if child is Hurtbox:
+			hurtbox = child
+			hurtbox.hurtbox_entered.connect(_on_hurtbox_entered)
+			break
 
 func _process(_delta: float) -> void:
 	if show_health == true:
@@ -21,15 +29,13 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	move_to_player(delta)
 	if Health <= 0:
-		die()
+		die.emit()
 	move_and_slide()
 
-func die():
-	queue_free()
-	
-func _on_hurtbox_collider_area_entered(bullet: Node2D) -> void:
-	Health -= Global.BULLET_DAMAGE
-	bullet.get_parent().queue_free()
 
 func move_to_player(delta : float):
 	position = position.move_toward(player.position, Speed * delta)
+
+
+func _on_hurtbox_entered(hitbox : Hitbox):
+	Health -= hitbox.damage_amount

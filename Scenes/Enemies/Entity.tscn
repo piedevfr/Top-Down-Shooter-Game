@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://qjq5idjffqvn" path="res://Top-Down-Shooter-Game/Scripts/Enemy_Scripts/Entity/Entity.gd" id="1_qjqld"]
 [ext_resource type="Texture2D" uid="uid://cc7wat15by0dh" path="res://Top-Down-Shooter-Game/Assets/icon.svg" id="2_ebik4"]
+[ext_resource type="Script" uid="uid://4ojgiysgg2cu" path="res://Top-Down-Shooter-Game/Scripts/Classes/Hitbox and Hurtbox/class_Hurtbox.gd" id="3_xrcks"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a3ek2"]
-radius = 19.723083
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrcks"]
+radius = 18.681541
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_62kcb"]
-radius = 33.06055
+[sub_resource type="CircleShape2D" id="CircleShape2D_ex8n6"]
+radius = 19.104973
 
 [node name="Entity" type="CharacterBody2D" unique_id=2038145908]
 motion_mode = 1
@@ -25,13 +26,13 @@ vertical_alignment = 1
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ebik4")
 
-[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=627692333]
-shape = SubResource("CircleShape2D_a3ek2")
-debug_color = Color(0.9330957, 0, 0.030336043, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1473135171]
+shape = SubResource("CircleShape2D_xrcks")
+debug_color = Color(1, 0, 0, 0.58431375)
 
-[node name="HurtboxCollider" type="Area2D" parent="." unique_id=395548925]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=565431542]
+script = ExtResource("3_xrcks")
+metadata/_custom_type_script = "uid://4ojgiysgg2cu"
 
-[node name="HurtboxShape" type="CollisionShape2D" parent="HurtboxCollider" unique_id=1957575442]
-shape = SubResource("CircleShape2D_62kcb")
-
-[connection signal="area_entered" from="HurtboxCollider" to="." method="_on_hurtbox_collider_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1041214116]
+shape = SubResource("CircleShape2D_ex8n6")
