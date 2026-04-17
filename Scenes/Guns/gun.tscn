@@ -5,9 +5,6 @@
 [ext_resource type="Animation" uid="uid://dmgaubx71y7hx" path="res://Top-Down-Shooter-Game/Scenes/Guns/Anims/gun_shoot.res" id="3_61bi1"]
 [ext_resource type="Animation" uid="uid://bov8mjtpo15yd" path="res://Top-Down-Shooter-Game/Scenes/Guns/Anims/reload.res" id="4_pmfcw"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rgq8v"]
-load_path = "res://.godot/imported/Gun.png-9ef87d96451492cfd903e55f9f37c2c2.ctex"
-
 [sub_resource type="Animation" id="Animation_61bi1"]
 length = 0.001
 tracks/0/type = "value"
@@ -46,7 +43,7 @@ _data = {
 script = ExtResource("1_6qmb8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1891330144]
-position = Vector2(14, 1)
+position = Vector2(21, -6)
 texture = ExtResource("2_61bi1")
 
 [node name="Nuzzle" type="Marker2D" parent="." unique_id=703556954]

@@ -7,11 +7,11 @@ class_name Hitbox
 signal hitbox_collided #provides the body collided with.(body : Node2D)
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	area_entered.connect(_on_area_entered)
 	if free_on_collision == true:
 		hitbox_collided.connect(_on_hitbox_collided)
 
-func _on_body_entered(body : Node2D):
+func _on_area_entered(body : Node2D):
 	hitbox_collided.emit(body)
 
 func _on_hitbox_collided(_body : Node2D):

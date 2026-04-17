@@ -8,7 +8,7 @@ class_name Entity
 
 @export var show_health : bool
 @export var Speed = 20
-@export var Health : int = 100
+@export var health : int = 100
 
 signal die
 
@@ -22,13 +22,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if show_health == true:
 		health_label.visible = true
-		health_label.text = "Health: %s" %Health
+		health_label.text = "Health: %s" %health
 	elif show_health == false:
-		health_label.visible = true
+		health_label.visible = false
+
 
 func _physics_process(delta: float) -> void:
 	move_to_player(delta)
-	if Health <= 0:
+	if health <= 0:
 		die.emit()
 	move_and_slide()
 
@@ -37,5 +38,5 @@ func move_to_player(delta : float):
 	position = position.move_toward(player.position, Speed * delta)
 
 
-func _on_hurtbox_entered(hitbox : Hitbox):
-	Health -= hitbox.damage_amount
+func _on_hurtbox_entered(hitbox : Hitbox, damage : int):
+	health -= damage
