@@ -4,7 +4,7 @@ class_name Entity
 
 @onready var hurtbox : Hurtbox
 @onready var health_label : Label = $Health
-@onready var player : Player = $"../Player"
+@onready var player : Player
 
 @export var show_health : bool
 @export var Speed = 20
@@ -13,6 +13,7 @@ class_name Entity
 signal die
 
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 	for child in get_children():
 		if child is Hurtbox:
 			hurtbox = child
@@ -28,7 +29,6 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	move_to_player(delta)
 	if health <= 0:
 		die.emit()
 	move_and_slide()

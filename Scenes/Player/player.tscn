@@ -60,7 +60,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=222796903 node_paths=PackedStringArray("gun")]
+[node name="Player" type="CharacterBody2D" unique_id=222796903 node_paths=PackedStringArray("gun") groups=["Player"]]
 script = ExtResource("1_tf12g")
 show_ammo = true
 gun = NodePath("Gun")
