@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3n2e8g32bpn"
-path="res://.godot/imported/Screenshot_2026-04-15_124538.png-2b425fdaa39c1fcb6ebc58114773fc77.ctex"
+path="res://.godot/imported/Screenshot_2026-04-15_124538.png-cefd6fb0996427495d5887bfea91795d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Top-Down-Shooter-Game/Assets/Sprites/Demo_Sprites/Screenshot_2026-04-15_124538.png"
-dest_files=["res://.godot/imported/Screenshot_2026-04-15_124538.png-2b425fdaa39c1fcb6ebc58114773fc77.ctex"]
+source_file="res://Assets/Sprites/Demo_Sprites/Screenshot_2026-04-15_124538.png"
+dest_files=["res://.godot/imported/Screenshot_2026-04-15_124538.png-cefd6fb0996427495d5887bfea91795d.ctex"]
 
 [params]
 

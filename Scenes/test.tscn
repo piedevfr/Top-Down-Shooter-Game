@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da85e1la2v8j0"]
 
-[ext_resource type="PackedScene" uid="uid://c45pt5gb26u5q" path="res://Top-Down-Shooter-Game/Scenes/Player/player.tscn" id="1_f4unn"]
-[ext_resource type="PackedScene" uid="uid://tecpep44lmjl" path="res://Top-Down-Shooter-Game/Scenes/Enemies/Zombie/zombie.tscn" id="2_jaepq"]
+[ext_resource type="PackedScene" uid="uid://c45pt5gb26u5q" path="res://Scenes/Player/player.tscn" id="1_f4unn"]
+[ext_resource type="PackedScene" uid="uid://tecpep44lmjl" path="res://Scenes/Enemies/Zombie/zombie.tscn" id="2_jaepq"]
 
 [node name="Node2D" type="Node2D" unique_id=1233500055]
 

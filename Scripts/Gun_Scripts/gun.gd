@@ -5,7 +5,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shoot_timer: Timer = $shoot_timer
 
-const BULLET := preload("res://Top-Down-Shooter-Game/Scenes/Bullet/bullet.tscn")
+const BULLET := preload("res://Scenes/Bullet/bullet.tscn")
 
 @export var ammo = 20:
 	set(value):
