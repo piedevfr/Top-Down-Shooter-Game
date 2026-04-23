@@ -10,7 +10,6 @@ class_name Entity
 @export var Speed = 20
 @export var health : int = 100
 
-signal die
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -26,17 +25,18 @@ func _process(_delta: float) -> void:
 		health_label.text = "Health: %s" %health
 	elif show_health == false:
 		health_label.visible = false
-
+	
+	if health <= 0:
+		die()
 
 func _physics_process(delta: float) -> void:
-	if health <= 0:
-		die.emit()
 	move_and_slide()
-
 
 func move_to_player(delta : float):
 	position = position.move_toward(player.position, Speed * delta)
 
-
 func _on_hurtbox_entered(hitbox : Hitbox, damage : int):
 	health -= damage
+
+func die():
+	pass
