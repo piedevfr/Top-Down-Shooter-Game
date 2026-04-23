@@ -1,11 +1,15 @@
 class_name Player
 extends CharacterBody2D
 
+var direction
 @onready var ammo: Label = $Ammo
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var joystick : Joystick = $CanvasLayer/Joystick
 
 @export var show_ammo : bool
 @export var gun : Node2D
+@export var health : int = 100
+@export var mobile : bool
 
 var speed = 150.0
 
@@ -13,17 +17,19 @@ func _ready() -> void:
 	position = Vector2(0,0)
 
 func _physics_process(_delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_vector("left", "right", "up", "down")
+	if mobile == false:
+		direction = Input.get_vector("left", "right", "up", "down")
+	elif mobile == true:
+		direction = joystick.get_joystick_direction()
 	velocity = direction * speed
+	
 	if show_ammo == true:
 		ammo.visible = true
 		ammo.text = "Ammo: %s" % gun.ammo
 	elif show_ammo == false:
 		ammo.visible = false
-	rotate_sprite()
 	
+	rotate_sprite()
 	move_and_slide()
 
 func rotate_sprite():
