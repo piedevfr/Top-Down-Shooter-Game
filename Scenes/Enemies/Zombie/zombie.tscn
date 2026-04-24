@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://daawoja4nvmil" path="res://Assets/Sprites/Demo_Sprites/Slime1_Death_with_shadow.png" id="2_ovjh8"]
 [ext_resource type="Texture2D" uid="uid://br0xp12w0jft8" path="res://Assets/Sprites/Demo_Sprites/Slime1_Run_body.png" id="2_q6bce"]
 [ext_resource type="Script" uid="uid://4ojgiysgg2cu" path="res://Scripts/Classes/Hitbox and Hurtbox/class_Hurtbox.gd" id="3_mab5i"]
+[ext_resource type="Script" uid="uid://dgjuahvt21mt1" path="res://Scripts/Classes/Hitbox and Hurtbox/class_Hitbox.gd" id="5_g82a4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6bce"]
 
@@ -154,7 +155,7 @@ script = ExtResource("1_fh8nd")
 show_health = true
 Speed = 42
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=574377772]
+[node name="CollisionShape2D - main" type="CollisionShape2D" parent="." unique_id=574377772]
 shape = SubResource("CircleShape2D_q6bce")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1998757659]
@@ -169,5 +170,14 @@ offset_bottom = 23.0
 script = ExtResource("3_mab5i")
 metadata/_custom_type_script = "uid://4ojgiysgg2cu"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1439205153]
+[node name="CollisionShape2D - hurt" type="CollisionShape2D" parent="Hurtbox" unique_id=1439205153]
 shape = SubResource("CircleShape2D_q6bce")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1294481175]
+script = ExtResource("5_g82a4")
+metadata/_custom_type_script = "uid://dgjuahvt21mt1"
+
+[node name="CollisionShape2D - hit" type="CollisionShape2D" parent="Hitbox" unique_id=748321864]
+shape = SubResource("CircleShape2D_q6bce")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

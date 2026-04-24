@@ -91,13 +91,16 @@ autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2022505559]
 position = Vector2(5, -9)
+zoom = Vector2(1.775, 1.775)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("4_4weey")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=914990857]
+visible = false
 
 [node name="Joystick" parent="CanvasLayer" unique_id=183930265 instance=ExtResource("5_htcer")]
+visible = false
 position = Vector2(411.00003, 488.00003)
 scale = Vector2(7.442, 7.442)
 

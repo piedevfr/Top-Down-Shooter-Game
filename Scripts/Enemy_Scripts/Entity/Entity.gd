@@ -6,6 +6,7 @@ class_name Entity
 @onready var health_label : Label = $Health
 @onready var player : Player
 
+@export var takes_damage : bool =  true
 @export var show_health : bool
 @export var Speed = 20
 @export var health : int = 100
@@ -36,7 +37,8 @@ func move_to_player(delta : float):
 	position = position.move_toward(player.position, Speed * delta)
 
 func _on_hurtbox_entered(hitbox : Hitbox, damage : int):
-	health -= damage
+	if takes_damage == true:
+		health -= damage
 
 func die():
 	pass

@@ -10,8 +10,10 @@ func _ready() -> void:
 
 func _on_area_entered(body : Node2D):
 	if body is Hitbox:
-		hurtbox_entered.emit(body, body.damage_amount)
+		if !is_ancestor_of(body):
+			hurtbox_entered.emit(body, body.damage_amount)
 
 func _on_area_exited(body : Node2D):
 	if body is Hitbox:
-		hurtbox_exited.emit(body, body.damage_amount)
+		if !is_ancestor_of(body):
+			hurtbox_exited.emit(body, body.damage_amount)

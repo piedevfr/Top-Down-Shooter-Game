@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 	else:
 		global_position = lerp(global_position, parent.global_position, return_speed * delta)
 		parent.posVector = Vector2(0, 0)
-	print(parent.posVector)
 
 
 func _on_button_button_down() -> void:
