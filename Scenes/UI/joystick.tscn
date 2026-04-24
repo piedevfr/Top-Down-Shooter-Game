@@ -4,14 +4,31 @@
 [ext_resource type="Texture2D" uid="uid://vsvcsc4tbt28" path="res://Assets/Sprites/Demo_Sprites/Joystick.png" id="2_4ard8"]
 [ext_resource type="Script" uid="uid://ceygot1dbni8u" path="res://Scripts/UI Scripts/joystick.gd" id="2_yfih0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yfih0"]
-radius = 15.35
+[sub_resource type="GDScript" id="GDScript_4ard8"]
+script/source = "extends Node2D
 
-[node name="Joystick" type="TouchScreenButton" unique_id=183930265]
-texture_normal = ExtResource("1_hljin")
-shape = SubResource("CircleShape2D_yfih0")
-script = ExtResource("2_yfih0")
+var posVector : Vector2
+"
+
+[node name="Joystick" type="Node2D" unique_id=1413670510]
+script = SubResource("GDScript_4ard8")
+
+[node name="Ring" type="Sprite2D" parent="." unique_id=1397400866]
+texture = ExtResource("1_hljin")
 
 [node name="Knob" type="Sprite2D" parent="." unique_id=109086118]
-position = Vector2(16, 16)
 texture = ExtResource("2_4ard8")
+script = ExtResource("2_yfih0")
+
+[node name="Button" type="Button" parent="." unique_id=871731293]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+pivot_offset = Vector2(38, 17)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[connection signal="button_down" from="Button" to="Knob" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="Knob" method="_on_button_button_up"]

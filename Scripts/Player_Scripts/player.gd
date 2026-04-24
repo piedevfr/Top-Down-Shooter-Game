@@ -4,7 +4,7 @@ extends CharacterBody2D
 var direction
 @onready var ammo: Label = $Ammo
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var joystick : Joystick = $CanvasLayer/Joystick
+@onready var joystick = $CanvasLayer/Joystick
 
 @export var show_ammo : bool
 @export var gun : Node2D
@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	if mobile == false:
 		direction = Input.get_vector("left", "right", "up", "down")
 	elif mobile == true:
-		direction = joystick.get_joystick_direction()
+		direction = joystick.posVector
 	velocity = direction * speed
 	
 	if show_ammo == true:

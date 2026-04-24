@@ -97,5 +97,5 @@ script = ExtResource("4_4weey")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=914990857]
 
 [node name="Joystick" parent="CanvasLayer" unique_id=183930265 instance=ExtResource("5_htcer")]
-position = Vector2(121, 132)
-scale = Vector2(3.739, 3.739)
+position = Vector2(411.00003, 488.00003)
+scale = Vector2(7.442, 7.442)

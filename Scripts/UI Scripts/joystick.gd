@@ -1,29 +1,39 @@
-extends TouchScreenButton
-class_name Joystick
+extends Sprite2D
 
-@onready var knob: Sprite2D = $Knob
-@onready var max_distance = shape.radius
+@onready var parent : Node2D = $".."
 
-var stick_center : Vector2 = texture_normal.get_size() / 2
-var touched : bool = false
+var pressing : bool = false
+var max_distance = 16
+var deadzone = 5
+var return_speed = 20
+
 
 func _ready() -> void:
-	set_process(false)
+	max_distance *= parent.scale.x
 
 func _process(delta: float) -> void:
-	knob.global_position = get_global_mouse_position()
-	knob.position = stick_center + (knob.position - stick_center).limit_length(max_distance)
+	if pressing == true:
+		if max_distance >= get_global_mouse_position().distance_to(parent.global_position):
+			global_position = get_global_mouse_position()
+		else:
+			var angle = parent.global_position.angle_to_point(get_global_mouse_position())
+			global_position.x = parent.global_position.x + cos(angle) * max_distance
+			global_position.y = parent.global_position.y + sin(angle) * max_distance
+		calculateVector()
+	else:
+		global_position = lerp(global_position, parent.global_position, return_speed * delta)
+		parent.posVector = Vector2(0, 0)
+	print(parent.posVector)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			set_process(true)
-			touched = true
-		elif not event.pressed:
-			set_process(false)
-			knob.position = stick_center
-			touched = false
 
-func get_joystick_direction() -> Vector2:
-	var direction = knob.position - stick_center
-	return direction.normalized()
+func _on_button_button_down() -> void:
+	pressing = true
+
+func _on_button_button_up() -> void:
+	pressing = false
+
+func calculateVector():
+	if abs(global_position.x - parent.global_position.x) >= deadzone:
+		parent.posVector.x = (global_position.x - parent.global_position.x) / max_distance
+	if abs(global_position.y - parent.global_position.y) >= deadzone:
+		parent.posVector.y = (global_position.y - parent.global_position.y) / max_distance
