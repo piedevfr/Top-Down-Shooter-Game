@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://31mm4b46mp6t" path="res://Scenes/Guns/gun.tscn" id="3_4weey"]
 [ext_resource type="Script" uid="uid://dxl4jwkavfvm7" path="res://Scripts/camera.gd" id="4_4weey"]
 [ext_resource type="PackedScene" uid="uid://d1pmo415pxc0a" path="res://Scenes/UI/joystick.tscn" id="5_htcer"]
+[ext_resource type="Script" uid="uid://4ojgiysgg2cu" path="res://Scripts/Classes/Hitbox and Hurtbox/class_Hurtbox.gd" id="6_dd0ac"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4weey"]
 radius = 6.0
@@ -99,3 +100,12 @@ script = ExtResource("4_4weey")
 [node name="Joystick" parent="CanvasLayer" unique_id=183930265 instance=ExtResource("5_htcer")]
 position = Vector2(411.00003, 488.00003)
 scale = Vector2(7.442, 7.442)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=769818239]
+script = ExtResource("6_dd0ac")
+metadata/_custom_type_script = "uid://4ojgiysgg2cu"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=719972340]
+shape = SubResource("CapsuleShape2D_4weey")
+
+[connection signal="hurtbox_entered" from="Hurtbox" to="." method="_on_hurtbox_entered"]

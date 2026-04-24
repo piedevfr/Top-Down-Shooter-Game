@@ -4,7 +4,7 @@ class_name Hitbox
 @export var damage_amount : int = 10
 @export var free_on_collision : bool = true
 
-signal hitbox_collided #provides the body collided with.(body : Node2D)
+signal hitbox_collided(body : Node2D) #provides the body collided with.(body : Node2D)
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)

@@ -1,8 +1,8 @@
 extends Area2D
 class_name Hurtbox
 
-signal hurtbox_entered #supplies "hitbox: Hitbox" as an argument
-signal hurtbox_exited #supplies "hitbox: Hitbox" as an argument
+signal hurtbox_entered(body : Hitbox, damage_amount : int) #supplies "hitbox: Hitbox" as an argument
+signal hurtbox_exited(body : Hitbox, damage_amount : int) #supplies "hitbox: Hitbox" as an argument
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)

@@ -38,3 +38,6 @@ func rotate_sprite():
 		animated_sprite.flip_h = true
 	else:
 		animated_sprite.flip_h = false
+
+func _on_hurtbox_entered(body: Hitbox, damage_amount: int) -> void:
+	health -= damage_amount
