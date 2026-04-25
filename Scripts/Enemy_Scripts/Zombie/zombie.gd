@@ -6,12 +6,18 @@ extends Entity
 var state : String = "follow"
 
 func _physics_process(delta: float) -> void:
+	print(state)
 	if state == "follow":
 		follow(delta)
 	if state == "death":
 		if animated_sprite.frame == 10:
 			queue_free()
-	print("existing")
+	if state == "attack":
+		animated_sprite.play("Attack")
+		if animated_sprite.frame == 4:
+			attack()
+		elif animated_sprite.frame == 9:
+			state = "follow"
 
 func follow(delta : float):
 	move_to_player(delta)
@@ -25,4 +31,7 @@ func die():
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("ar")
+		state = "attack"
+
+func attack():
+	print

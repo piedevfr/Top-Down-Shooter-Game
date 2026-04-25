@@ -19,8 +19,10 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if mobile == false:
 		direction = Input.get_vector("left", "right", "up", "down")
+		joystick.visible = false
 	elif mobile == true:
 		direction = joystick.posVector
+		joystick.visible = true
 	velocity = direction * speed
 	
 	if show_ammo == true:
