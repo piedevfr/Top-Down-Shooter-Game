@@ -1,20 +1,20 @@
 class_name Player
 extends CharacterBody2D
 
-var direction
 @onready var ammo: Label = $Ammo
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var joystick = $CanvasLayer/Joystick
 
 @export var show_ammo : bool
+@export var mobile : bool
 @export var gun : Node2D
 @export var health : int = 100
-@export var mobile : bool
 
 var speed = 150.0
+var direction
 
 func _ready() -> void:
-	position = Vector2(0,0)
+	pass
 
 func _physics_process(_delta: float) -> void:
 	if mobile == false:
@@ -31,6 +31,9 @@ func _physics_process(_delta: float) -> void:
 	elif show_ammo == false:
 		ammo.visible = false
 	
+	if health <= 0:
+		die()
+	
 	rotate_sprite()
 	move_and_slide()
 
@@ -40,6 +43,9 @@ func rotate_sprite():
 		animated_sprite.flip_h = true
 	else:
 		animated_sprite.flip_h = false
+
+func die():
+	queue_free()
 
 func _on_hurtbox_entered(body: Hitbox, damage_amount: int) -> void:
 	health -= damage_amount

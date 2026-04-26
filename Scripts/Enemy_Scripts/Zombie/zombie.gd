@@ -4,9 +4,13 @@ extends Entity
 @onready var hitbox: Hitbox = $Hitbox
 
 var state : String = "follow"
+var touching_player : bool
 
 func _physics_process(delta: float) -> void:
 	print(state)
+	if touching_player == true:
+		state = "attack"
+	
 	if state == "follow":
 		follow(delta)
 	if state == "death":
@@ -31,7 +35,11 @@ func die():
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		state = "attack"
+		touching_player = true
+
+func _on_hurtbox_body_exited(body: Node2D) -> void:
+	if body is Player:
+		touching_player = false
 
 func attack():
 	print
