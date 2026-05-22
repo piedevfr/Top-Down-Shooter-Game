@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Top Down Shooter"
 config/tags=PackedStringArray("2d", "collaboration")
+run/main_scene="uid://da85e1la2v8j0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Top-Down-Shooter-Game/Assets/icon.svg"
 
@@ -81,6 +82,11 @@ right={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194444,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="movement"
+2d_physics/layer_2="damage"
 
 [physics]
 

@@ -2,21 +2,23 @@ class_name Player
 extends CharacterBody2D
 
 @onready var ammo: Label = $Ammo
+@onready var health_label: ProgressBar = $"test_UI/health_UI"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var joystick = $CanvasLayer/Joystick
+@onready var joystick = $"test_UI/Joystick"
 
 @export var show_ammo : bool
 @export var mobile : bool
 @export var gun : Node2D
-@export var health : int = 100
+@export var health : int = clamp(100, 0, 100)
 
 var speed = 150.0
 var direction
 
 func _ready() -> void:
-	pass
+	joystick.visible = true
 
 func _physics_process(_delta: float) -> void:
+	#print(health)
 	if mobile == false:
 		direction = Input.get_vector("left", "right", "up", "down")
 		joystick.visible = false
@@ -34,6 +36,8 @@ func _physics_process(_delta: float) -> void:
 	if health <= 0:
 		die()
 	
+	health_label.value = health
+	
 	rotate_sprite()
 	move_and_slide()
 
@@ -48,4 +52,5 @@ func die():
 	queue_free()
 
 func _on_hurtbox_entered(body: Hitbox, damage_amount: int) -> void:
+	print("taking damage")
 	health -= damage_amount

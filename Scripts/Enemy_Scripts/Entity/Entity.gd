@@ -2,23 +2,16 @@ extends CharacterBody2D
 class_name Entity
 
 
-@onready var hurtbox : Hurtbox
+@onready var hurtbox : Enemy_Hurtbox
 @onready var health_label : Label = $Health
 @onready var player : Player
 
 @export var takes_damage : bool =  true
 @export var show_health : bool
 @export var Speed = 20
-@export var health : int = 100
+@export var health : int = clamp(100, 0, 100)
 
 
-func _ready() -> void:
-	player = get_tree().get_first_node_in_group("Player")
-	for child in get_children():
-		if child is Hurtbox:
-			hurtbox = child
-			hurtbox.hurtbox_entered.connect(_on_hurtbox_entered)
-			break
 
 func _process(_delta: float) -> void:
 	if show_health == true:
@@ -38,7 +31,16 @@ func move_to_player(delta : float):
 
 func _on_hurtbox_entered(hitbox : Hitbox, damage : int):
 	if takes_damage == true:
-		health -= damage
+		if hitbox.get_parent() is not Entity:
+			health -= damage
 
 func die():
 	pass
+
+func initialize_entity() -> void:
+	player = get_tree().get_first_node_in_group("Player")
+	for child in get_children():
+		if child is Enemy_Hurtbox:
+			hurtbox = child
+			hurtbox.hurtbox_entered.connect(_on_hurtbox_entered)
+			break

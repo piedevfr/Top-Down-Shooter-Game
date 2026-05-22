@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dyv305ttl4fee" path="res://Assets/Sprites/Demo_Sprites/Slime1_Attack_with_shadow.png" id="2_nvpn5"]
 [ext_resource type="Texture2D" uid="uid://daawoja4nvmil" path="res://Assets/Sprites/Demo_Sprites/Slime1_Death_with_shadow.png" id="2_ovjh8"]
 [ext_resource type="Texture2D" uid="uid://br0xp12w0jft8" path="res://Assets/Sprites/Demo_Sprites/Slime1_Run_body.png" id="2_q6bce"]
-[ext_resource type="Script" uid="uid://4ojgiysgg2cu" path="res://Scripts/Classes/Hitbox and Hurtbox/class_Hurtbox.gd" id="3_mab5i"]
-[ext_resource type="Script" uid="uid://dgjuahvt21mt1" path="res://Scripts/Classes/Hitbox and Hurtbox/class_Hitbox.gd" id="5_g82a4"]
+[ext_resource type="Script" uid="uid://qdti2fw64p42" path="res://Scripts/Classes/Hitbox and Hurtbox/class_enemyHurtbox.gd" id="6_nvpn5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6bce"]
 
@@ -229,7 +228,8 @@ animations = [{
 [node name="Zombie" type="CharacterBody2D" unique_id=427439122]
 script = ExtResource("1_fh8nd")
 show_health = true
-Speed = 42
+Speed = 58
+health = 200
 
 [node name="CollisionShape2D - main" type="CollisionShape2D" parent="." unique_id=574377772]
 shape = SubResource("CircleShape2D_q6bce")
@@ -242,20 +242,12 @@ animation = &"Die"
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1718078460]
-script = ExtResource("3_mab5i")
-metadata/_custom_type_script = "uid://4ojgiysgg2cu"
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1558362178]
+collision_priority = 2.0
+script = ExtResource("6_nvpn5")
+metadata/_custom_type_script = "uid://qdti2fw64p42"
 
-[node name="CollisionShape2D - hurt" type="CollisionShape2D" parent="Hurtbox" unique_id=1439205153]
-shape = SubResource("CircleShape2D_q6bce")
-
-[node name="Hitbox" type="Area2D" parent="." unique_id=1294481175]
-script = ExtResource("5_g82a4")
-damage_amount = 40
-free_on_collision = false
-metadata/_custom_type_script = "uid://dgjuahvt21mt1"
-
-[node name="CollisionShape2D - hit" type="CollisionShape2D" parent="Hitbox" unique_id=748321864]
+[node name="CollisionShape2D - hit" type="CollisionShape2D" parent="Hurtbox" unique_id=748321864]
 shape = SubResource("CircleShape2D_q6bce")
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

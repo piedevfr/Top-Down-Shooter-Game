@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c45pt5gb26u5q" path="res://Scenes/Player/player.tscn" id="1_f4unn"]
 [ext_resource type="PackedScene" uid="uid://tecpep44lmjl" path="res://Scenes/Enemies/Zombie/zombie.tscn" id="2_jaepq"]
+[ext_resource type="PackedScene" uid="uid://clcl54ehxdwii" path="res://Scenes/Bullet/bullet.tscn" id="3_qc4db"]
 
 [node name="Node2D" type="Node2D" unique_id=1233500055]
 
@@ -11,3 +12,7 @@ mobile = false
 
 [node name="Zombie" parent="." unique_id=427439122 instance=ExtResource("2_jaepq")]
 position = Vector2(5, 2)
+
+[node name="Bullet" parent="." unique_id=43902502 instance=ExtResource("3_qc4db")]
+position = Vector2(170.00002, 57)
+rotation = -3.1660273

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://31mm4b46mp6t" path="res://Scenes/Guns/gun.tscn" id="3_4weey"]
 [ext_resource type="Script" uid="uid://dxl4jwkavfvm7" path="res://Scripts/camera.gd" id="4_4weey"]
 [ext_resource type="PackedScene" uid="uid://d1pmo415pxc0a" path="res://Scenes/UI/joystick.tscn" id="5_htcer"]
-[ext_resource type="Script" uid="uid://4ojgiysgg2cu" path="res://Scripts/Classes/Hitbox and Hurtbox/class_Hurtbox.gd" id="6_dd0ac"]
+[ext_resource type="Script" uid="uid://4ojgiysgg2cu" path="res://Scripts/Classes/Hitbox and Hurtbox/class_playerHurtbox.gd" id="6_dd0ac"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4weey"]
 radius = 6.0
@@ -65,8 +65,8 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=222796903 node_paths=PackedStringArray("gun") groups=["Player"]]
 script = ExtResource("1_tf12g")
 show_ammo = true
-gun = NodePath("Gun")
 mobile = true
+gun = NodePath("Gun")
 metadata/_edit_horizontal_guides_ = [-87.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022014073]
@@ -91,18 +91,27 @@ autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2022505559]
 position = Vector2(5, -9)
-zoom = Vector2(1.775, 1.775)
+zoom = Vector2(5.432, 5.432)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("4_4weey")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=914990857]
+[node name="test_UI" type="CanvasLayer" parent="." unique_id=914990857]
+layer = 2
 
-[node name="Joystick" parent="CanvasLayer" unique_id=183930265 instance=ExtResource("5_htcer")]
+[node name="Joystick" parent="test_UI" unique_id=183930265 instance=ExtResource("5_htcer")]
 position = Vector2(411.00003, 488.00003)
 scale = Vector2(7.442, 7.442)
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=769818239]
+[node name="health_UI" type="ProgressBar" parent="test_UI" unique_id=1237975199]
+offset_left = 98.0
+offset_top = 62.0
+offset_right = 441.0
+offset_bottom = 124.0
+size_flags_horizontal = 0
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1883024759]
+collision_priority = 2.0
 script = ExtResource("6_dd0ac")
 metadata/_custom_type_script = "uid://4ojgiysgg2cu"
 

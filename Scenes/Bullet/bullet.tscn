@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://clcl54ehxdwii"]
 
-[ext_resource type="Script" uid="uid://bxuuqm0r7xd2b" path="res://Top-Down-Shooter-Game/Scripts/Bullet_Scripts/bullet.gd" id="1_qx8lh"]
-[ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Top-Down-Shooter-Game/Assets/Sprites/Demo_Sprites/Bullet.png" id="2_qx8lh"]
-[ext_resource type="Script" uid="uid://dgjuahvt21mt1" path="res://Top-Down-Shooter-Game/Scripts/Classes/Hitbox and Hurtbox/class_Hitbox.gd" id="3_qx8lh"]
+[ext_resource type="Script" uid="uid://bxuuqm0r7xd2b" path="res://Scripts/Bullet_Scripts/bullet.gd" id="1_qx8lh"]
+[ext_resource type="Texture2D" uid="uid://y4vtaoixsj24" path="res://Assets/Sprites/Demo_Sprites/Bullet.png" id="2_qx8lh"]
+[ext_resource type="Script" uid="uid://dgjuahvt21mt1" path="res://Scripts/Classes/Hitbox and Hurtbox/class_Hitbox.gd" id="3_qx8lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx8lh"]
 size = Vector2(4.8970675, 1.8094252)
@@ -16,6 +16,8 @@ texture = ExtResource("2_qx8lh")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=850625078]
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1205668408]
+collision_priority = 2.0
+input_pickable = false
 script = ExtResource("3_qx8lh")
 metadata/_custom_type_script = "uid://dgjuahvt21mt1"
 
