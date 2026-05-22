@@ -15,4 +15,5 @@ func _on_area_entered(body : Node2D):
 	hitbox_collided.emit(body)
 
 func _on_hitbox_collided(_body : Node2D):
-	get_parent().queue_free()
+	var parent = get_parent()
+	parent.queue_free()
