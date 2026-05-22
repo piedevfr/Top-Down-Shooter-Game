@@ -4,50 +4,21 @@ extends Entity
 @onready var attack_cooldown : Timer = Timer.new()
 #@onready var hitbox: Hitbox = $Hitbox
 
-enum STATE{
-	ATTACK,
-	FOLLOW,
-	DEAD
-}
-
-var state : STATE
-var touching_player : bool
-var can_attack : bool = true
-var alive: bool = true
-
-
-func _ready() -> void:
-	initialize_entity()
-	attack_cooldown.timeout.connect(on_attack_cooldown_timeout)
-	add_child(attack_cooldown)
-
+var state : String = "follow"
 
 func _physics_process(delta: float) -> void:
-	#print(animated_sprite.sprite_frames.get_animation_speed("Attack") / animated_sprite.sprite_frames.get_frame_count("Attack"))
-	#print(animated_sprite.frame)
-	#print(can_attack)
-	if touching_player == true:
-		state = STATE.ATTACK
-	elif alive:
-		state = STATE.FOLLOW
-	
-	match state:
-		STATE.FOLLOW:
-			follow(delta)
-		STATE.DEAD:
-			alive = false
-			if animated_sprite.frame == 10:
-				queue_free()
-		STATE.ATTACK:
-			if alive == true:
-				if animated_sprite.animation != "Attack":
-					animated_sprite.play("Attack")
-				print(animated_sprite.animation, animated_sprite.frame)
-				if animated_sprite.frame == 4:
-					attack()
-				elif animated_sprite.frame == 9 and touching_player == false:
-					state = STATE.FOLLOW
-
+	print(state)
+	if state == "follow":
+		follow(delta)
+	if state == "death":
+		if animated_sprite.frame == 10:
+			queue_free()
+	if state == "attack":
+		animated_sprite.play("Attack")
+		if animated_sprite.frame == 4:
+			attack()
+		elif animated_sprite.frame == 9:
+			state = "follow"
 
 func follow(delta : float):
 	move_to_player(delta)
@@ -62,13 +33,8 @@ func die():
 	animated_sprite.play("Die")
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body == player:
-		touching_player = true
-
-
-func _on_hurtbox_body_exited(body: Node2D) -> void:
-	if body == player:
-		touching_player = false
+	if body is Player:
+		state = "attack"
 
 
 func attack():
